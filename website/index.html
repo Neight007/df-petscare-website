@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DF Petscare | 宠物益生菌专家</title>
-    <meta name="description" content="专注宠物健康，让每一只宠物都能拥有健康快乐的陪伴。主要产品：宠物益生菌、宠物营养品。">
+    <title>DF PetCare | Stop Guessing. Start Restoring.</title>
+    <meta name="description" content="Science-driven pet microbiome solutions. Precision diagnostics and targeted probiotic interventions for your furry family.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,27 +14,36 @@
         }
 
         :root {
-            --primary: #FF6B6B;
-            --primary-dark: #EE5A5A;
-            --secondary: #4ECDC4;
-            --accent: #FFE66D;
-            --dark: #2D3436;
-            --light: #F8F9FA;
+            --primary: #0B6E4F;
+            --primary-light: #14A76C;
+            --primary-dark: #064A36;
+            --accent: #00C9A7;
+            --accent-glow: rgba(0, 201, 167, 0.15);
+            --science-blue: #2D7DD2;
+            --dark: #0D1B2A;
+            --dark-mid: #1B2D45;
+            --gray-dark: #3D5A80;
+            --gray: #6B7B8D;
+            --gray-light: #A8B2BD;
+            --light: #F4F7FA;
+            --light-warm: #F8FAF9;
             --white: #FFFFFF;
-            --gray: #636E72;
+            --warning: #E07A5F;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
             color: var(--dark);
             background: var(--white);
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Header */
+        /* ==================== HEADER ==================== */
         header {
-            background: var(--white);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
             position: fixed;
             width: 100%;
             top: 0;
@@ -52,64 +62,105 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
+            gap: 0.6rem;
+            text-decoration: none;
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            color: var(--primary);
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         nav a {
             text-decoration: none;
-            color: var(--dark);
+            color: var(--gray-dark);
             font-weight: 500;
+            font-size: 0.95rem;
             transition: color 0.3s;
+            letter-spacing: 0.2px;
         }
 
         nav a:hover {
             color: var(--primary);
         }
 
-        .cta-button {
+        .nav-cta {
             background: var(--primary);
             color: white;
             padding: 0.6rem 1.5rem;
-            border-radius: 25px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.9rem;
             transition: all 0.3s;
         }
 
-        .cta-button:hover {
+        .nav-cta:hover {
             background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.3);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(11,110,79,0.3);
         }
 
-        /* Hero Section */
+        /* Mobile menu button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--dark);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* ==================== HERO ==================== */
         .hero {
-            padding: 8rem 2rem 4rem;
-            background: linear-gradient(135deg, #FFF5F5 0%, #F0FDFD 100%);
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
+            padding: 10rem 2rem 6rem;
+            background: linear-gradient(165deg, #F8FAF9 0%, #EEF5F2 40%, #E8F4F0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .hero-container {
@@ -119,102 +170,217 @@
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent-glow);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0,201,167,0.2);
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
         }
 
         .hero-content h1 {
-            font-size: 3rem;
-            line-height: 1.2;
+            font-size: 3.5rem;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
             color: var(--dark);
+            font-weight: 800;
+            letter-spacing: -1.5px;
         }
 
-        .hero-content h1 span {
-            color: var(--primary);
+        .hero-content h1 .highlight {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .hero-content p {
-            font-size: 1.2rem;
-            color: var(--gray);
-            margin-bottom: 2rem;
+        .hero-content .subtitle {
+            font-size: 1.15rem;
+            color: var(--gray-dark);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            max-width: 520px;
         }
 
         .hero-buttons {
             display: flex;
             gap: 1rem;
+            align-items: center;
         }
 
         .btn-primary {
             background: var(--primary);
             color: white;
             padding: 1rem 2rem;
-            border-radius: 30px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .btn-primary:hover {
             background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(11,110,79,0.3);
         }
 
-        .btn-secondary {
-            background: white;
+        .btn-outline {
             color: var(--dark);
             padding: 1rem 2rem;
-            border-radius: 30px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
             border: 2px solid var(--dark);
             transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .btn-secondary:hover {
+        .btn-outline:hover {
             background: var(--dark);
             color: white;
         }
 
-        .hero-image {
+        /* Hero visual */
+        .hero-visual {
             position: relative;
         }
 
-        .hero-image img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        .hero-card {
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            position: relative;
         }
 
-        .floating-badge {
+        .hero-card .microbiome-viz {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #E8F4F0, #D4EFE6);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .microbiome-viz .cell {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float-cell 6s ease-in-out infinite;
+        }
+
+        .cell-1 { width: 60px; height: 60px; background: var(--accent); top: 20%; left: 15%; animation-delay: 0s; }
+        .cell-2 { width: 40px; height: 40px; background: var(--primary); top: 50%; left: 60%; animation-delay: 1s; }
+        .cell-3 { width: 50px; height: 50px; background: var(--science-blue); top: 30%; right: 20%; animation-delay: 2s; }
+        .cell-4 { width: 35px; height: 35px; background: var(--primary-light); bottom: 25%; left: 35%; animation-delay: 0.5s; }
+        .cell-5 { width: 45px; height: 45px; background: var(--accent); bottom: 20%; right: 30%; animation-delay: 1.5s; }
+
+        @keyframes float-cell {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(10px, -15px) scale(1.05); }
+            66% { transform: translate(-8px, 10px) scale(0.95); }
+        }
+
+        .microbiome-viz .center-icon {
+            font-size: 4rem;
+            z-index: 2;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+
+        .hero-card-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .hero-stat {
+            text-align: center;
+            padding: 1rem 0.5rem;
+            background: var(--light);
+            border-radius: 12px;
+        }
+
+        .hero-stat .number {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .hero-stat .label {
+            font-size: 0.75rem;
+            color: var(--gray);
+            margin-top: 0.2rem;
+        }
+
+        .floating-tag {
             position: absolute;
             background: white;
-            padding: 1rem 1.5rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            animation: float 3s ease-in-out infinite;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            font-size: 0.85rem;
+            font-weight: 600;
+            animation: float-tag 4s ease-in-out infinite;
+            z-index: 5;
         }
 
-        .badge-1 {
-            top: 10%;
-            left: -20px;
+        .tag-1 {
+            top: -15px;
+            left: -30px;
+            color: var(--primary);
+            border-left: 3px solid var(--accent);
         }
 
-        .badge-2 {
-            bottom: 20%;
-            right: -20px;
-            animation-delay: 1.5s;
+        .tag-2 {
+            bottom: 60px;
+            right: -25px;
+            color: var(--science-blue);
+            border-left: 3px solid var(--science-blue);
+            animation-delay: 2s;
         }
 
-        @keyframes float {
+        @keyframes float-tag {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
         }
 
-        /* Features Section */
-        .features {
-            padding: 5rem 2rem;
+        /* ==================== PHILOSOPHY / VALUES ==================== */
+        .philosophy {
+            padding: 6rem 2rem;
             background: var(--white);
         }
 
@@ -228,501 +394,951 @@
             margin-bottom: 4rem;
         }
 
+        .section-label {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+        }
+
         .section-header h2 {
             font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
             margin-bottom: 1rem;
+            color: var(--dark);
         }
 
         .section-header p {
             color: var(--gray);
             font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .features-grid {
+        .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
         }
 
-        .feature-card {
-            background: var(--light);
-            padding: 2rem;
+        .value-card {
+            background: var(--light-warm);
+            border: 1px solid rgba(0,0,0,0.04);
+            padding: 2.5rem 1.8rem;
             border-radius: 20px;
-            text-align: center;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .value-card:hover::before {
+            opacity: 1;
+        }
+
+        .value-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .value-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* ==================== PRODUCT ==================== */
+        .product {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--light) 0%, var(--white) 100%);
+        }
+
+        .product-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 5rem;
+        }
+
+        .product-image-box {
+            background: linear-gradient(135deg, #E8F4F0, #D4EFE6);
+            border-radius: 24px;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            position: relative;
+        }
+
+        .product-image-box .product-icon {
+            font-size: 8rem;
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.1));
+        }
+
+        .product-name-tag {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .product-details h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-details .product-tagline {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-details p {
+            color: var(--gray-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* Use cases */
+        .use-cases {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .use-case {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.04);
             transition: all 0.3s;
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        .use-case:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        .use-case-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .use-case:first-child .use-case-icon {
+            background: rgba(224, 122, 95, 0.12);
+        }
+
+        .use-case:last-child .use-case-icon {
+            background: var(--accent-glow);
+        }
+
+        .use-case h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .use-case p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* Key Ingredients */
+        .ingredients {
+            padding: 4rem 0 0;
+        }
+
+        .ingredients h3 {
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+
+        .ingredient-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .ingredient-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.3s;
+        }
+
+        .ingredient-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .ingredient-card .ing-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--accent-glow), rgba(11,110,79,0.08));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2rem;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
         }
 
-        .feature-card h3 {
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+        .ingredient-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
         }
 
-        .feature-card p {
+        .ingredient-card p {
             color: var(--gray);
+            font-size: 0.85rem;
+            line-height: 1.6;
         }
 
-        /* Products Section */
-        .products {
-            padding: 5rem 2rem;
-            background: var(--light);
+        /* ==================== ABOUT ==================== */
+        .about {
+            padding: 6rem 2rem;
+            background: var(--white);
         }
 
-        .products-grid {
+        .about-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
         }
 
-        .product-card {
-            background: white;
-            border-radius: 20px;
+        .about-visual {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 24px;
+            padding: 3rem;
+            min-height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: all 0.3s;
         }
 
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        .about-visual::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0,201,167,0.2), transparent);
+            top: -50px;
+            right: -50px;
+            border-radius: 50%;
         }
 
-        .product-image {
-            height: 250px;
-            background: linear-gradient(135deg, #FFE5E5, #E5FFF9);
+        .about-visual .quote {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1.4;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-visual .quote-author {
+            color: rgba(255,255,255,0.7);
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-visual .about-icon {
+            font-size: 5rem;
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            opacity: 0.15;
+        }
+
+        .about-content h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: var(--gray-dark);
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .about-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .about-highlight {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--light-warm);
+            border-radius: 12px;
+        }
+
+        .about-highlight .check {
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
-        }
-
-        .product-info {
-            padding: 1.5rem;
-        }
-
-        .product-tag {
-            display: inline-block;
-            background: var(--secondary);
             color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
             font-size: 0.8rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .product-info h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        .product-info p {
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .product-price {
-            font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary);
+            flex-shrink: 0;
+            margin-top: 2px;
         }
 
-        .product-price span {
-            font-size: 1rem;
+        .about-highlight div h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .about-highlight div p {
+            font-size: 0.85rem;
             color: var(--gray);
-            text-decoration: line-through;
-            margin-left: 0.5rem;
+            margin-bottom: 0;
         }
 
-        /* About Section */
-        .about {
-            padding: 5rem 2rem;
-            background: white;
+        /* ==================== CONTACT ==================== */
+        .contact {
+            padding: 6rem 2rem;
+            background: var(--dark);
+            color: white;
         }
 
-        .about-container {
+        .contact-grid {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
-            align-items: center;
+            align-items: start;
         }
 
-        .about-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-content p {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-        }
-
-        .about-stats {
-            display: flex;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-
-        .stat h3 {
-            font-size: 2.5rem;
-            color: var(--primary);
-        }
-
-        .stat p {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        .about-image {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 20px;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-        }
-
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 2.5rem;
+        .contact-info h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
             margin-bottom: 1rem;
         }
 
-        .contact p {
-            opacity: 0.9;
-            margin-bottom: 2rem;
+        .contact-info > p {
+            color: var(--gray-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .contact-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(0,201,167,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item h4 {
+            font-size: 0.85rem;
+            color: var(--gray-light);
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-item p, .contact-item a {
+            color: white;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        .contact-form-box {
+            background: var(--dark-mid);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .contact-form-box h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form-box > p {
+            color: var(--gray-light);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
         }
 
         .contact-form {
             display: flex;
+            flex-direction: column;
             gap: 1rem;
-            max-width: 500px;
-            margin: 0 auto;
         }
 
-        .contact-form input {
-            flex: 1;
-            padding: 1rem 1.5rem;
-            border: none;
-            border-radius: 30px;
-            font-size: 1rem;
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: white;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: var(--gray);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
         }
 
         .contact-form button {
-            background: var(--dark);
+            background: var(--primary);
             color: white;
             border: none;
             padding: 1rem 2rem;
-            border-radius: 30px;
+            border-radius: 10px;
             font-weight: 600;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s;
+            font-family: inherit;
         }
 
         .contact-form button:hover {
-            background: #1a1a1a;
+            background: var(--primary-light);
+            transform: translateY(-1px);
         }
 
-        /* Footer */
-        footer {
-            background: var(--dark);
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: #25D366;
             color: white;
-            padding: 3rem 2rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background: #1FAD53;
+            transform: translateY(-1px);
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: #070F1A;
+            color: white;
+            padding: 3rem 2rem 1.5rem;
         }
 
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-logo .logo-icon {
+            width: 32px;
+            height: 32px;
+            font-size: 0.85rem;
+            border-radius: 8px;
+        }
+
+        .footer-logo span {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
             gap: 2rem;
         }
 
-        .footer-col h4 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-col a {
-            color: #aaa;
+        .footer-links a {
+            color: var(--gray);
             text-decoration: none;
+            font-size: 0.85rem;
             transition: color 0.3s;
         }
 
-        .footer-col a:hover {
+        .footer-links a:hover {
             color: white;
         }
 
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 2rem auto 0;
-            padding-top: 2rem;
-            border-top: 1px solid #444;
-            text-align: center;
-            color: #aaa;
+        .footer-copy {
+            color: var(--gray);
+            font-size: 0.8rem;
         }
 
-        /* Responsive */
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1024px) {
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ingredient-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
-            .hero-container {
+            .hero-container,
+            .product-showcase,
+            .about-grid,
+            .contact-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 8rem 1.5rem 4rem;
                 text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero-content .subtitle {
+                margin: 0 auto 2rem;
             }
 
             .hero-buttons {
                 justify-content: center;
+                flex-wrap: wrap;
             }
 
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .about-container {
+            .values-grid {
                 grid-template-columns: 1fr;
             }
 
-            .about-image {
-                height: 300px;
+            .use-cases {
+                grid-template-columns: 1fr;
             }
 
-            .contact-form {
-                flex-direction: column;
+            .ingredient-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .product-details h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-content h2,
+            .contact-info h2 {
+                font-size: 1.8rem;
             }
 
             nav ul {
                 display: none;
             }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
+
     <!-- Header -->
     <header>
         <div class="nav-container">
-            <div class="logo">
-                <div class="logo-icon">🐾</div>
-                <span>DF Petscare</span>
-            </div>
+            <a href="#" class="logo">
+                <div class="logo-icon">DF</div>
+                <span class="logo-text">DF <span>PetCare</span></span>
+            </a>
             <nav>
                 <ul>
-                    <li><a href="#home">首页</a></li>
-                    <li><a href="#products">产品</a></li>
-                    <li><a href="#about">关于我们</a></li>
-                    <li><a href="#contact">联系我们</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#philosophy">Our Philosophy</a></li>
+                    <li><a href="#product">Product</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <a href="#products" class="cta-button">立即购买</a>
+            <a href="#product" class="nav-cta">Explore Product</a>
+            <button class="menu-toggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero" id="home">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>让您的宠物<br><span>健康成长每一天</span></h1>
-                <p>专注宠物益生菌研发，科学配方，天然原料，帮助您的宠物建立健康肠道，提升免疫力。</p>
+                <div class="hero-badge">Pet Microbiome Science</div>
+                <h1>Stop Guessing.<br><span class="highlight">Start Restoring.</span></h1>
+                <p class="subtitle">Science-driven pet microbiome solutions. Precision diagnostics and targeted probiotic interventions — because your pet deserves more than guesswork.</p>
                 <div class="hero-buttons">
-                    <a href="#products" class="btn-primary">查看产品</a>
-                    <a href="#about" class="btn-secondary">了解更多</a>
+                    <a href="#product" class="btn-primary">Explore DF Bio-Fix &rarr;</a>
+                    <a href="#about" class="btn-outline">Our Story</a>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="hero-image-placeholder">🐕🐱</div>
-                <div class="floating-badge badge-1">
-                    <strong>🏆</strong> 品质保证
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="microbiome-viz">
+                        <div class="cell cell-1"></div>
+                        <div class="cell cell-2"></div>
+                        <div class="cell cell-3"></div>
+                        <div class="cell cell-4"></div>
+                        <div class="cell cell-5"></div>
+                        <span class="center-icon">🔬</span>
+                    </div>
+                    <div class="hero-card-stats">
+                        <div class="hero-stat">
+                            <div class="number">10+</div>
+                            <div class="label">Years Expertise</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="number">NAVC</div>
+                            <div class="label">Certified</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="number">HK</div>
+                            <div class="label">Headquartered</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="floating-badge badge-2">
-                    <strong>🚚</strong> 快速发货
-                </div>
+                <div class="floating-tag tag-1">Patented Strains</div>
+                <div class="floating-tag tag-2">Clinically Proven</div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
+    <!-- Philosophy / Core Values -->
+    <section class="philosophy" id="philosophy">
         <div class="section-container">
             <div class="section-header">
-                <h2>为什么选择我们？</h2>
-                <p>专注宠物健康，我们只做最好的</p>
+                <span class="section-label">Our Philosophy</span>
+                <h2>The Future of Pet Health is Microscopic</h2>
+                <p>We don't treat symptoms. We restore ecosystems. Four principles guide everything we do.</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🔬</div>
-                    <h3>科学配方</h3>
-                    <p>联合宠物营养专家研发，多种有益菌株科学配比</p>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">&#x1F9EA;</div>
+                    <h3>Diagnostics First</h3>
+                    <p>We believe data over instinct. Through precise at-home screening, we identify the root cause — no more overusing antibiotics or ineffective supplements.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌿</div>
-                    <h3>天然原料</h3>
-                    <p>选用天然原料，无添加剂，无副作用，安全放心</p>
+                <div class="value-card">
+                    <div class="value-icon">&#x1F9EC;</div>
+                    <h3>Microbiome-Centric</h3>
+                    <p>Whether gut or oral, health is built on microbial balance. We don't mask symptoms — we repair the ecosystem from the inside out.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>见效快</h3>
-                    <p>高活性菌株，快速定植肠道，改善效果明显</p>
+                <div class="value-card">
+                    <div class="value-icon">&#x1F3AF;</div>
+                    <h3>Uncompromising Efficacy</h3>
+                    <p>We only use patented ingredients backed by world-class clinical data — like Lesaffre's Saccharomyces boulardii — ensuring every dose delivers.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💚</div>
-                    <h3>宠物喜爱</h3>
-                    <p>适口性好，宠物爱吃，喂食方便</p>
+                <div class="value-card">
+                    <div class="value-icon">&#x1F50D;</div>
+                    <h3>Full Transparency</h3>
+                    <p>From our Hong Kong R&D lab to globally sourced ingredients, our formulas are 100% transparent. No fillers — only active compounds that work.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section class="products" id="products">
+    <!-- Product -->
+    <section class="product" id="product">
         <div class="section-container">
             <div class="section-header">
-                <h2>热门产品</h2>
-                <p>专为不同宠物设计的益生菌配方</p>
+                <span class="section-label">Our Product</span>
+                <h2>DF Bio-Fix</h2>
+                <p>Targeted probiotic intervention powered by Saccharomyces boulardii</p>
             </div>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">🐕</div>
-                    <div class="product-info">
-                        <span class="product-tag">犬用</span>
-                        <h3>宠物益生菌 (犬用)</h3>
-                        <p>专为狗狗设计的益生菌配方，改善肠道健康，提升免疫力</p>
-                        <div class="product-price">¥128 <span>¥168</span></div>
-                    </div>
+
+            <div class="product-showcase">
+                <div class="product-image-box">
+                    <span class="product-icon">&#x1F48A;</span>
+                    <div class="product-name-tag">DF Bio-Fix</div>
                 </div>
-                <div class="product-card">
-                    <div class="product-image">🐈</div>
-                    <div class="product-info">
-                        <span class="product-tag">猫用</span>
-                        <h3>宠物益生菌 (猫用)</h3>
-                        <p>专为猫咪设计的益生菌配方，减少软便，促进消化</p>
-                        <div class="product-price">¥128 <span>¥168</span></div>
-                    </div>
+                <div class="product-details">
+                    <h2>Restore Balance. Rebuild Health.</h2>
+                    <div class="product-tagline">Powered by Saccharomyces boulardii (S. boulardii)</div>
+                    <p>DF Bio-Fix is built around Saccharomyces boulardii, a clinically validated probiotic yeast sourced from France's Lesaffre — the global leader in yeast biotechnology. Unlike bacterial probiotics, S. boulardii is naturally resistant to antibiotics, making it the ideal companion during and after antibiotic therapy.</p>
+                    <p>Whether your pet is fighting acute diarrhea or needs daily digestive support, DF Bio-Fix delivers precision where it matters most — the gut.</p>
                 </div>
-                <div class="product-card">
-                    <div class="product-image">🐾</div>
-                    <div class="product-info">
-                        <span class="product-tag">通用</span>
-                        <h3>宠物益生菌 (通用)</h3>
-                        <p>适合多宠家庭，猫狗通用，全面呵护宠物健康</p>
-                        <div class="product-price">¥118 <span>¥158</span></div>
+            </div>
+
+            <!-- Two use cases -->
+            <div class="use-cases">
+                <div class="use-case">
+                    <div class="use-case-icon">&#x26A1;</div>
+                    <h3>Acute Diarrhea &amp; Antibiotic Support</h3>
+                    <p>In cases of acute bacterial diarrhea, S. boulardii works alongside antibiotics — not against them. It helps restore gut flora balance, reduces the duration of diarrhea, and prevents antibiotic-associated dysbiosis. Clinically proven to shorten recovery time significantly.</p>
+                </div>
+                <div class="use-case">
+                    <div class="use-case-icon">&#x1F331;</div>
+                    <h3>Daily Care &amp; Chronic GI Support</h3>
+                    <p>For pets with chronic soft stools, sensitive stomachs, or weakened GI function, DF Bio-Fix serves as a daily microbiome maintenance formula. Regular supplementation strengthens intestinal barrier integrity and supports long-term digestive resilience.</p>
+                </div>
+            </div>
+
+            <!-- Key Ingredients -->
+            <div class="ingredients">
+                <h3>Key Formulation Highlights</h3>
+                <div class="ingredient-cards">
+                    <div class="ingredient-card">
+                        <div class="ing-icon">&#x1F3ED;</div>
+                        <h4>Lesaffre S. boulardii</h4>
+                        <p>Patented probiotic yeast from France. Antibiotic-resistant, acid-stable, clinically backed by 60+ years of research.</p>
+                    </div>
+                    <div class="ingredient-card">
+                        <div class="ing-icon">&#x1F9EC;</div>
+                        <h4>Targeted Delivery</h4>
+                        <p>Engineered to survive gastric acid and reach the intestine alive. Every colony-forming unit counts.</p>
+                    </div>
+                    <div class="ingredient-card">
+                        <div class="ing-icon">&#x2705;</div>
+                        <h4>Zero Fillers</h4>
+                        <p>No artificial colors, no unnecessary additives. 100% transparent formula with only active, efficacious ingredients.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About -->
     <section class="about" id="about">
-        <div class="about-container">
-            <div class="about-content">
-                <h2>关于 DF Petscare</h2>
-                <p>我们是一家专注于宠物健康用品的跨境电商公司，主营宠物益生菌、营养品等健康产品。</p>
-                <p>我们的使命是通过科学配方和天然原料，为全球宠物提供最优质的健康产品，让每一只宠物都能拥有健康快乐的陪伴。</p>
-                <div class="about-stats">
-                    <div class="stat">
-                        <h3>50K+</h3>
-                        <p>服务宠物</p>
-                    </div>
-                    <div class="stat">
-                        <h3>98%</h3>
-                        <p>客户好评</p>
-                    </div>
-                    <div class="stat">
-                        <h3>15+</h3>
-                        <p>产品国家</p>
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">About Us</span>
+                <h2>Science-Driven Wellness for Your Furry Family</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-visual">
+                    <p class="quote">"Every pet deserves a lifetime of health, happiness, and healing companionship."</p>
+                    <p class="quote-author">— DF PetCare Founding Principle</p>
+                    <div class="about-icon">&#x1F43E;</div>
+                </div>
+                <div class="about-content">
+                    <h2>About DF PetCare</h2>
+                    <p>At DF PetCare, our name is inspired by the founder's son — affectionately nicknamed "Dragon Fruit" — symbolizing the deep familial bond we share with our pets. To us, every furry friend is a family member, and their well-being is our lifelong mission.</p>
+                    <p>Headquartered in Hong Kong, DF PetCare stands at the forefront of pet microbiome innovation. Our founder brings over a decade of deep-rooted expertise in intestinal microecology and holds the prestigious NAVC (North American Veterinary Community) certification.</p>
+                    <div class="about-highlights">
+                        <div class="about-highlight">
+                            <span class="check">&#x2713;</span>
+                            <div>
+                                <h4>Hong Kong Headquartered</h4>
+                                <p>At the forefront of pet microbiome innovation in Asia</p>
+                            </div>
+                        </div>
+                        <div class="about-highlight">
+                            <span class="check">&#x2713;</span>
+                            <div>
+                                <h4>NAVC Certified Expertise</h4>
+                                <p>10+ years of deep expertise in intestinal microecology</p>
+                            </div>
+                        </div>
+                        <div class="about-highlight">
+                            <span class="check">&#x2713;</span>
+                            <div>
+                                <h4>Science-Backed Mission</h4>
+                                <p>Empowering pet parents with targeted nutritional interventions</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="about-image">
-                🐾
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section class="contact" id="contact">
-        <div class="contact-container">
-            <h2>关注我们</h2>
-            <p>订阅获取最新产品和优惠信息</p>
-            <form class="contact-form">
-                <input type="email" placeholder="输入您的邮箱">
-                <button type="submit">订阅</button>
-            </form>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <p>Have questions about our products or want to learn more about pet microbiome health? We'd love to hear from you.</p>
+                <div class="contact-items">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">&#x1F3E2;</div>
+                        <div>
+                            <h4>Address</h4>
+                            <p>Unit 2807, 28/F, Peninsula Tower,<br>538 Castle Peak Road, Lai Chi Kok,<br>Kowloon, Hong Kong</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">&#x2709;</div>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:info.dfpetcare@gmail.com">info.dfpetcare@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://wa.me/85200000000" class="whatsapp-btn" target="_blank" rel="noopener">
+                    &#x1F4AC; Chat on WhatsApp
+                </a>
+            </div>
+            <div class="contact-form-box">
+                <h3>Send Us a Message</h3>
+                <p>We'll get back to you within 24 hours.</p>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="How can we help?" rows="4"></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="footer-container">
-            <div class="footer-col">
-                <h4>DF Petscare</h4>
-                <p style="color: #aaa;">让每一只宠物都能拥有健康快乐的陪伴</p>
+            <div class="footer-logo">
+                <div class="logo-icon">DF</div>
+                <span>DF PetCare</span>
             </div>
-            <div class="footer-col">
-                <h4>产品</h4>
-                <ul>
-                    <li><a href="#">宠物益生菌 (犬用)</a></li>
-                    <li><a href="#">宠物益生菌 (猫用)</a></li>
-                    <li><a href="#">宠物益生菌 (通用)</a></li>
-                </ul>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#philosophy">Philosophy</a>
+                <a href="#product">Product</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
             </div>
-            <div class="footer-col">
-                <h4>关于</h4>
-                <ul>
-                    <li><a href="#">关于我们</a></li>
-                    <li><a href="#">品牌故事</a></li>
-                    <li><a href="#">联系我们</a></li>
-                </ul>
+            <div class="footer-copy">
+                &copy; 2026 DF PetsCare (Hong Kong) Limited. All rights reserved.
             </div>
-            <div class="footer-col">
-                <h4>客户服务</h4>
-                <ul>
-                    <li><a href="#">常见问题</a></li>
-                    <li><a href="#">配送说明</a></li>
-                    <li><a href="#">退换政策</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 DF Petscare. All rights reserved.</p>
         </div>
     </footer>
+
 </body>
 </html>
