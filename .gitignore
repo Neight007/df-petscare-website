@@ -1,0 +1,17 @@
+tools/runtime/
+**/._*
+__pycache__/
+/DF Pet Care update/
+/DF Pet Health/
+/DF Pet Health.zip
+/df-petscare-website.zip
+/archive/
+/docs/
+/wordpress/
+/website/images/
+/website/assets/pet-family.webp
+/website/assets/pets.webp
+/tools/github-pages.ps1
+/tools/wordpress-blueprint.json
+/tools/check-php.mjs
+/tools/build_wordpress.py

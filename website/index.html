@@ -1,1344 +1,184 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DF PetCare | Stop Guessing. Start Restoring.</title>
-    <meta name="description" content="Science-driven pet microbiome solutions. Precision diagnostics and targeted probiotic interventions for your furry family.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #0B6E4F;
-            --primary-light: #14A76C;
-            --primary-dark: #064A36;
-            --accent: #00C9A7;
-            --accent-glow: rgba(0, 201, 167, 0.15);
-            --science-blue: #2D7DD2;
-            --dark: #0D1B2A;
-            --dark-mid: #1B2D45;
-            --gray-dark: #3D5A80;
-            --gray: #6B7B8D;
-            --gray-light: #A8B2BD;
-            --light: #F4F7FA;
-            --light-warm: #F8FAF9;
-            --white: #FFFFFF;
-            --warning: #E07A5F;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.7;
-            color: var(--dark);
-            background: var(--white);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* ==================== HEADER ==================== */
-        header {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 42px;
-            height: 42px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-
-        .logo-text {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--dark);
-            letter-spacing: -0.5px;
-        }
-
-        .logo-text span {
-            color: var(--primary);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--gray-dark);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-            letter-spacing: 0.2px;
-        }
-
-        nav a:hover {
-            color: var(--primary);
-        }
-
-        .nav-cta {
-            background: var(--primary);
-            color: white;
-            padding: 0.6rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-        }
-
-        .nav-cta:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 15px rgba(11,110,79,0.3);
-        }
-
-        /* Mobile menu button */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .menu-toggle span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: var(--dark);
-            margin: 5px 0;
-            transition: 0.3s;
-        }
-
-        /* ==================== HERO ==================== */
-        .hero {
-            padding: 10rem 2rem 6rem;
-            background: linear-gradient(165deg, #F8FAF9 0%, #EEF5F2 40%, #E8F4F0 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--accent-glow);
-            color: var(--primary);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(0,201,167,0.2);
-        }
-
-        .hero-badge::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: pulse-dot 2s infinite;
-        }
-
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-            font-weight: 800;
-            letter-spacing: -1.5px;
-        }
-
-        .hero-content h1 .highlight {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-content .subtitle {
-            font-size: 1.15rem;
-            color: var(--gray-dark);
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-            max-width: 520px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(11,110,79,0.3);
-        }
-
-        .btn-outline {
-            color: var(--dark);
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            border: 2px solid var(--dark);
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-outline:hover {
-            background: var(--dark);
-            color: white;
-        }
-
-        /* Hero visual */
-        .hero-visual {
-            position: relative;
-        }
-
-        .hero-card {
-            background: white;
-            border-radius: 24px;
-            padding: 3rem;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-            position: relative;
-        }
-
-        .hero-card .microbiome-viz {
-            width: 100%;
-            height: 280px;
-            background: linear-gradient(135deg, #E8F4F0, #D4EFE6);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .microbiome-viz .cell {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.6;
-            animation: float-cell 6s ease-in-out infinite;
-        }
-
-        .cell-1 { width: 60px; height: 60px; background: var(--accent); top: 20%; left: 15%; animation-delay: 0s; }
-        .cell-2 { width: 40px; height: 40px; background: var(--primary); top: 50%; left: 60%; animation-delay: 1s; }
-        .cell-3 { width: 50px; height: 50px; background: var(--science-blue); top: 30%; right: 20%; animation-delay: 2s; }
-        .cell-4 { width: 35px; height: 35px; background: var(--primary-light); bottom: 25%; left: 35%; animation-delay: 0.5s; }
-        .cell-5 { width: 45px; height: 45px; background: var(--accent); bottom: 20%; right: 30%; animation-delay: 1.5s; }
-
-        @keyframes float-cell {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(10px, -15px) scale(1.05); }
-            66% { transform: translate(-8px, 10px) scale(0.95); }
-        }
-
-        .microbiome-viz .center-icon {
-            font-size: 4rem;
-            z-index: 2;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
-        }
-
-        .hero-card-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .hero-stat {
-            text-align: center;
-            padding: 1rem 0.5rem;
-            background: var(--light);
-            border-radius: 12px;
-        }
-
-        .hero-stat .number {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .hero-stat .label {
-            font-size: 0.75rem;
-            color: var(--gray);
-            margin-top: 0.2rem;
-        }
-
-        .floating-tag {
-            position: absolute;
-            background: white;
-            padding: 0.8rem 1.2rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            font-size: 0.85rem;
-            font-weight: 600;
-            animation: float-tag 4s ease-in-out infinite;
-            z-index: 5;
-        }
-
-        .tag-1 {
-            top: -15px;
-            left: -30px;
-            color: var(--primary);
-            border-left: 3px solid var(--accent);
-        }
-
-        .tag-2 {
-            bottom: 60px;
-            right: -25px;
-            color: var(--science-blue);
-            border-left: 3px solid var(--science-blue);
-            animation-delay: 2s;
-        }
-
-        @keyframes float-tag {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        /* ==================== PHILOSOPHY / VALUES ==================== */
-        .philosophy {
-            padding: 6rem 2rem;
-            background: var(--white);
-        }
-
-        .section-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-label {
-            display: inline-block;
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 0.8rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .section-header p {
-            color: var(--gray);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-
-        .value-card {
-            background: var(--light-warm);
-            border: 1px solid rgba(0,0,0,0.04);
-            padding: 2.5rem 1.8rem;
-            border-radius: 20px;
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .value-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .value-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-        }
-
-        .value-card:hover::before {
-            opacity: 1;
-        }
-
-        .value-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .value-card h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            color: var(--dark);
-        }
-
-        .value-card p {
-            color: var(--gray);
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-
-        /* ==================== PRODUCT ==================== */
-        .product {
-            padding: 6rem 2rem;
-            background: linear-gradient(180deg, var(--light) 0%, var(--white) 100%);
-        }
-
-        .product-showcase {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin-bottom: 5rem;
-        }
-
-        .product-image-box {
-            background: linear-gradient(135deg, #E8F4F0, #D4EFE6);
-            border-radius: 24px;
-            padding: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 400px;
-            position: relative;
-        }
-
-        .product-image-box .product-icon {
-            font-size: 8rem;
-            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.1));
-        }
-
-        .product-name-tag {
-            position: absolute;
-            bottom: 1.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-        }
-
-        .product-details h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 0.5rem;
-        }
-
-        .product-details .product-tagline {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .product-details p {
-            color: var(--gray-dark);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        /* Use cases */
-        .use-cases {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .use-case {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.04);
-            transition: all 0.3s;
-        }
-
-        .use-case:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
-
-        .use-case-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .use-case:first-child .use-case-icon {
-            background: rgba(224, 122, 95, 0.12);
-        }
-
-        .use-case:last-child .use-case-icon {
-            background: var(--accent-glow);
-        }
-
-        .use-case h3 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            color: var(--dark);
-        }
-
-        .use-case p {
-            color: var(--gray);
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-
-        /* Key Ingredients */
-        .ingredients {
-            padding: 4rem 0 0;
-        }
-
-        .ingredients h3 {
-            text-align: center;
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: var(--dark);
-        }
-
-        .ingredient-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .ingredient-card {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-            border: 1px solid rgba(0,0,0,0.04);
-            transition: all 0.3s;
-        }
-
-        .ingredient-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
-
-        .ingredient-card .ing-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, var(--accent-glow), rgba(11,110,79,0.08));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.5rem;
-        }
-
-        .ingredient-card h4 {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-
-        .ingredient-card p {
-            color: var(--gray);
-            font-size: 0.85rem;
-            line-height: 1.6;
-        }
-
-        /* ==================== ABOUT ==================== */
-        .about {
-            padding: 6rem 2rem;
-            background: var(--white);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .about-visual {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border-radius: 24px;
-            padding: 3rem;
-            min-height: 450px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-visual::before {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0,201,167,0.2), transparent);
-            top: -50px;
-            right: -50px;
-            border-radius: 50%;
-        }
-
-        .about-visual .quote {
-            color: white;
-            font-size: 1.8rem;
-            font-weight: 700;
-            line-height: 1.4;
-            position: relative;
-            z-index: 2;
-        }
-
-        .about-visual .quote-author {
-            color: rgba(255,255,255,0.7);
-            margin-top: 1.5rem;
-            font-size: 0.95rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .about-visual .about-icon {
-            font-size: 5rem;
-            position: absolute;
-            bottom: 2rem;
-            right: 2rem;
-            opacity: 0.15;
-        }
-
-        .about-content h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-content p {
-            color: var(--gray-dark);
-            margin-bottom: 1.2rem;
-            line-height: 1.8;
-        }
-
-        .about-highlights {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .about-highlight {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1rem;
-            background: var(--light-warm);
-            border-radius: 12px;
-        }
-
-        .about-highlight .check {
-            width: 28px;
-            height: 28px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.8rem;
-            font-weight: 700;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .about-highlight div h4 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 0.2rem;
-        }
-
-        .about-highlight div p {
-            font-size: 0.85rem;
-            color: var(--gray);
-            margin-bottom: 0;
-        }
-
-        /* ==================== CONTACT ==================== */
-        .contact {
-            padding: 6rem 2rem;
-            background: var(--dark);
-            color: white;
-        }
-
-        .contact-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .contact-info h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 1rem;
-        }
-
-        .contact-info > p {
-            color: var(--gray-light);
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-        }
-
-        .contact-items {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-
-        .contact-item-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(0,201,167,0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .contact-item h4 {
-            font-size: 0.85rem;
-            color: var(--gray-light);
-            font-weight: 500;
-            margin-bottom: 0.3rem;
-        }
-
-        .contact-item p, .contact-item a {
-            color: white;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-item a:hover {
-            color: var(--accent);
-        }
-
-        .contact-form-box {
-            background: var(--dark-mid);
-            border-radius: 20px;
-            padding: 2.5rem;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .contact-form-box h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-form-box > p {
-            color: var(--gray-light);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 0.9rem 1.2rem;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 10px;
-            color: white;
-            font-size: 0.95rem;
-            font-family: inherit;
-            transition: border-color 0.3s;
-        }
-
-        .contact-form input::placeholder,
-        .contact-form textarea::placeholder {
-            color: var(--gray);
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-
-        .contact-form textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .contact-form button {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: inherit;
-        }
-
-        .contact-form button:hover {
-            background: var(--primary-light);
-            transform: translateY(-1px);
-        }
-
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: #25D366;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-top: 1rem;
-            transition: all 0.3s;
-        }
-
-        .whatsapp-btn:hover {
-            background: #1FAD53;
-            transform: translateY(-1px);
-        }
-
-        /* ==================== FOOTER ==================== */
-        footer {
-            background: #070F1A;
-            color: white;
-            padding: 3rem 2rem 1.5rem;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .footer-logo .logo-icon {
-            width: 32px;
-            height: 32px;
-            font-size: 0.85rem;
-            border-radius: 8px;
-        }
-
-        .footer-logo span {
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .footer-links a {
-            color: var(--gray);
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .footer-copy {
-            color: var(--gray);
-            font-size: 0.8rem;
-        }
-
-        /* ==================== RESPONSIVE ==================== */
-        @media (max-width: 1024px) {
-            .values-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .ingredient-cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-container,
-            .product-showcase,
-            .about-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                padding: 8rem 1.5rem 4rem;
-                text-align: center;
-            }
-
-            .hero-content h1 {
-                font-size: 2.4rem;
-            }
-
-            .hero-content .subtitle {
-                margin: 0 auto 2rem;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-
-            .values-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .use-cases {
-                grid-template-columns: 1fr;
-            }
-
-            .ingredient-cards {
-                grid-template-columns: 1fr;
-            }
-
-            .section-header h2 {
-                font-size: 2rem;
-            }
-
-            .product-details h2 {
-                font-size: 1.8rem;
-            }
-
-            .about-content h2,
-            .contact-info h2 {
-                font-size: 1.8rem;
-            }
-
-            nav ul {
-                display: none;
-            }
-
-            .nav-cta {
-                display: none;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .footer-container {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Header -->
-    <header>
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <div class="logo-icon">DF</div>
-                <span class="logo-text">DF <span>PetCare</span></span>
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#philosophy">Our Philosophy</a></li>
-                    <li><a href="#product">Product</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <a href="#product" class="nav-cta">Explore Product</a>
-            <button class="menu-toggle" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </header>
-
-    <!-- Hero -->
-    <section class="hero" id="home">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-badge">Pet Microbiome Science</div>
-                <h1>Stop Guessing.<br><span class="highlight">Start Restoring.</span></h1>
-                <p class="subtitle">Science-driven pet microbiome solutions. Precision diagnostics and targeted probiotic interventions — because your pet deserves more than guesswork.</p>
-                <div class="hero-buttons">
-                    <a href="#product" class="btn-primary">Explore DF Bio-Fix &rarr;</a>
-                    <a href="#about" class="btn-outline">Our Story</a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-card">
-                    <div class="microbiome-viz">
-                        <div class="cell cell-1"></div>
-                        <div class="cell cell-2"></div>
-                        <div class="cell cell-3"></div>
-                        <div class="cell cell-4"></div>
-                        <div class="cell cell-5"></div>
-                        <span class="center-icon">🔬</span>
-                    </div>
-                    <div class="hero-card-stats">
-                        <div class="hero-stat">
-                            <div class="number">10+</div>
-                            <div class="label">Years Expertise</div>
-                        </div>
-                        <div class="hero-stat">
-                            <div class="number">NAVC</div>
-                            <div class="label">Certified</div>
-                        </div>
-                        <div class="hero-stat">
-                            <div class="number">HK</div>
-                            <div class="label">Headquartered</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="floating-tag tag-1">Patented Strains</div>
-                <div class="floating-tag tag-2">Clinically Proven</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Philosophy / Core Values -->
-    <section class="philosophy" id="philosophy">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-label">Our Philosophy</span>
-                <h2>The Future of Pet Health is Microscopic</h2>
-                <p>We don't treat symptoms. We restore ecosystems. Four principles guide everything we do.</p>
-            </div>
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">&#x1F9EA;</div>
-                    <h3>Diagnostics First</h3>
-                    <p>We believe data over instinct. Through precise at-home screening, we identify the root cause — no more overusing antibiotics or ineffective supplements.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">&#x1F9EC;</div>
-                    <h3>Microbiome-Centric</h3>
-                    <p>Whether gut or oral, health is built on microbial balance. We don't mask symptoms — we repair the ecosystem from the inside out.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">&#x1F3AF;</div>
-                    <h3>Uncompromising Efficacy</h3>
-                    <p>We only use patented ingredients backed by world-class clinical data — like Lesaffre's Saccharomyces boulardii — ensuring every dose delivers.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">&#x1F50D;</div>
-                    <h3>Full Transparency</h3>
-                    <p>From our Hong Kong R&D lab to globally sourced ingredients, our formulas are 100% transparent. No fillers — only active compounds that work.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Product -->
-    <section class="product" id="product">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-label">Our Product</span>
-                <h2>DF Bio-Fix</h2>
-                <p>Targeted probiotic intervention powered by Saccharomyces boulardii</p>
-            </div>
-
-            <div class="product-showcase">
-                <div class="product-image-box">
-                    <span class="product-icon">&#x1F48A;</span>
-                    <div class="product-name-tag">DF Bio-Fix</div>
-                </div>
-                <div class="product-details">
-                    <h2>Restore Balance. Rebuild Health.</h2>
-                    <div class="product-tagline">Powered by Saccharomyces boulardii (S. boulardii)</div>
-                    <p>DF Bio-Fix is built around Saccharomyces boulardii, a clinically validated probiotic yeast sourced from France's Lesaffre — the global leader in yeast biotechnology. Unlike bacterial probiotics, S. boulardii is naturally resistant to antibiotics, making it the ideal companion during and after antibiotic therapy.</p>
-                    <p>Whether your pet is fighting acute diarrhea or needs daily digestive support, DF Bio-Fix delivers precision where it matters most — the gut.</p>
-                </div>
-            </div>
-
-            <!-- Two use cases -->
-            <div class="use-cases">
-                <div class="use-case">
-                    <div class="use-case-icon">&#x26A1;</div>
-                    <h3>Acute Diarrhea &amp; Antibiotic Support</h3>
-                    <p>In cases of acute bacterial diarrhea, S. boulardii works alongside antibiotics — not against them. It helps restore gut flora balance, reduces the duration of diarrhea, and prevents antibiotic-associated dysbiosis. Clinically proven to shorten recovery time significantly.</p>
-                </div>
-                <div class="use-case">
-                    <div class="use-case-icon">&#x1F331;</div>
-                    <h3>Daily Care &amp; Chronic GI Support</h3>
-                    <p>For pets with chronic soft stools, sensitive stomachs, or weakened GI function, DF Bio-Fix serves as a daily microbiome maintenance formula. Regular supplementation strengthens intestinal barrier integrity and supports long-term digestive resilience.</p>
-                </div>
-            </div>
-
-            <!-- Key Ingredients -->
-            <div class="ingredients">
-                <h3>Key Formulation Highlights</h3>
-                <div class="ingredient-cards">
-                    <div class="ingredient-card">
-                        <div class="ing-icon">&#x1F3ED;</div>
-                        <h4>Lesaffre S. boulardii</h4>
-                        <p>Patented probiotic yeast from France. Antibiotic-resistant, acid-stable, clinically backed by 60+ years of research.</p>
-                    </div>
-                    <div class="ingredient-card">
-                        <div class="ing-icon">&#x1F9EC;</div>
-                        <h4>Targeted Delivery</h4>
-                        <p>Engineered to survive gastric acid and reach the intestine alive. Every colony-forming unit counts.</p>
-                    </div>
-                    <div class="ingredient-card">
-                        <div class="ing-icon">&#x2705;</div>
-                        <h4>Zero Fillers</h4>
-                        <p>No artificial colors, no unnecessary additives. 100% transparent formula with only active, efficacious ingredients.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About -->
-    <section class="about" id="about">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-label">About Us</span>
-                <h2>Science-Driven Wellness for Your Furry Family</h2>
-            </div>
-            <div class="about-grid">
-                <div class="about-visual">
-                    <p class="quote">"Every pet deserves a lifetime of health, happiness, and healing companionship."</p>
-                    <p class="quote-author">— DF PetCare Founding Principle</p>
-                    <div class="about-icon">&#x1F43E;</div>
-                </div>
-                <div class="about-content">
-                    <h2>About DF PetCare</h2>
-                    <p>At DF PetCare, our name is inspired by the founder's son — affectionately nicknamed "Dragon Fruit" — symbolizing the deep familial bond we share with our pets. To us, every furry friend is a family member, and their well-being is our lifelong mission.</p>
-                    <p>Headquartered in Hong Kong, DF PetCare stands at the forefront of pet microbiome innovation. Our founder brings over a decade of deep-rooted expertise in intestinal microecology and holds the prestigious NAVC (North American Veterinary Community) certification.</p>
-                    <div class="about-highlights">
-                        <div class="about-highlight">
-                            <span class="check">&#x2713;</span>
-                            <div>
-                                <h4>Hong Kong Headquartered</h4>
-                                <p>At the forefront of pet microbiome innovation in Asia</p>
-                            </div>
-                        </div>
-                        <div class="about-highlight">
-                            <span class="check">&#x2713;</span>
-                            <div>
-                                <h4>NAVC Certified Expertise</h4>
-                                <p>10+ years of deep expertise in intestinal microecology</p>
-                            </div>
-                        </div>
-                        <div class="about-highlight">
-                            <span class="check">&#x2713;</span>
-                            <div>
-                                <h4>Science-Backed Mission</h4>
-                                <p>Empowering pet parents with targeted nutritional interventions</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact" id="contact">
-        <div class="contact-grid">
-            <div class="contact-info">
-                <h2>Get in Touch</h2>
-                <p>Have questions about our products or want to learn more about pet microbiome health? We'd love to hear from you.</p>
-                <div class="contact-items">
-                    <div class="contact-item">
-                        <div class="contact-item-icon">&#x1F3E2;</div>
-                        <div>
-                            <h4>Address</h4>
-                            <p>Unit 2807, 28/F, Peninsula Tower,<br>538 Castle Peak Road, Lai Chi Kok,<br>Kowloon, Hong Kong</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-item-icon">&#x2709;</div>
-                        <div>
-                            <h4>Email</h4>
-                            <a href="mailto:info.dfpetcare@gmail.com">info.dfpetcare@gmail.com</a>
-                        </div>
-                    </div>
-                </div>
-                <a href="https://wa.me/85200000000" class="whatsapp-btn" target="_blank" rel="noopener">
-                    &#x1F4AC; Chat on WhatsApp
-                </a>
-            </div>
-            <div class="contact-form-box">
-                <h3>Send Us a Message</h3>
-                <p>We'll get back to you within 24 hours.</p>
-                <form class="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="How can we help?" rows="4"></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-logo">
-                <div class="logo-icon">DF</div>
-                <span>DF PetCare</span>
-            </div>
-            <div class="footer-links">
-                <a href="#home">Home</a>
-                <a href="#philosophy">Philosophy</a>
-                <a href="#product">Product</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <div class="footer-copy">
-                &copy; 2026 DF PetsCare (Hong Kong) Limited. All rights reserved.
-            </div>
-        </div>
-    </footer>
-
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HomePage | DF Pet Care</title><meta name="description" content="Science-led microbiome wellness for pets. Explore DF Pet Care and DF Gut daily digestive support."><link rel="icon" href="assets/logo.webp"><link rel="stylesheet" href="style.css"><script src="site.js" defer></script></head><body><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html"><img src="assets/logo.webp" alt="" width="46" height="50"><span>DF PET CARE<small>SCIENCE. CARE. FAMILY.</small></span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu <span>☰</span></button><nav id="primary-nav" aria-label="Main navigation"><a aria-current="page" href="index.html">HomePage</a><a href="about-us.html">About Us</a><a href="our-science.html">Our Science</a><a href="products.html">Products</a><a href="contact-us.html">Contact Us</a><a class="partner-link" href="mailto:info.dfpetcare@gmail.com?subject=DF%20Pet%20Care%20partnership%20enquiry">Become a Partner ↗</a></nav></div></header><main id="main">
+<div class="wp-block-group section hero">
+<div class="wp-block-group container">
+<div class="wp-block-group split ">
+<div class="wp-block-group split-copy">
+<p class="eyebrow">Science-led Microbiome Wellness for Pets</p>
+
+
+<h1 class="wp-block-heading">The Right Science.<br>The Right Solution.<br><em>For Every Pet.</em></h1>
+
+
+<p class="lead">Thoughtful microbiome care, inspired by the family members who make our lives whole.</p>
+
+
+<div class="wp-block-buttons">
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="df-gut.html">Discover DF Gut</a></div>
+
+
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="our-science.html">Our approach to science</a></div>
+
+</div>
+
+
+<p class="microline">GUT HEALTH &nbsp; / &nbsp; ORAL CARE &nbsp; / &nbsp; SKIN WELLNESS</p>
+
+</div>
+
+
+<div class="wp-block-group split-visual">
+<figure class="wp-block-image size-full"><img src="assets/gut-box.webp" alt="DF Gut S. boulardii daily digestive support box and sachet"/></figure>
+
+
+<p class="photo-label">DF GUT &nbsp; · &nbsp; DAILY DIGESTIVE SUPPORT</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="wp-block-group section ">
+<div class="wp-block-group container">
+<p class="eyebrow">Understanding pet microbiome health</p>
+
+
+<h2 class="wp-block-heading">A tiny world.<br>A big part of their well-being.</h2>
+
+
+<p class="lead">Just like humans, cats and dogs are home to diverse communities of microorganisms. In the gut, mouth and skin, these communities interact with digestion, immune function and the body’s natural protective barriers.</p>
+
+
+<div class="wp-block-group grid grid-3 ">
+<div class="wp-block-group card">
+<p class="card-number">01 / GUT</p>
+
+
+<h3 class="wp-block-heading">Digestive wellness</h3>
+
+
+<p>Supporting digestive wellness and healthy microbial function.</p>
+
+</div>
+
+
+<div class="wp-block-group card">
+<p class="card-number">02 / ORAL</p>
+
+
+<h3 class="wp-block-heading">A balanced oral environment</h3>
+
+
+<p>Understanding the microbial communities that shape the oral environment.</p>
+
+</div>
+
+
+<div class="wp-block-group card">
+<p class="card-number">03 / SKIN</p>
+
+
+<h3 class="wp-block-heading">Healthy protective barriers</h3>
+
+
+<p>Exploring the relationship between skin microbes and healthy skin barriers.</p>
+
+</div>
+
+</div>
+
+
+<p>At DF Pet Care, we believe thoughtful pet wellness begins with understanding the microbiome.</p>
+
+
+<div class="wp-block-buttons">
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="our-science.html">Discover our science →</a></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="wp-block-group section story-band">
+<div class="wp-block-group container">
+<div class="wp-block-group split ">
+<div class="wp-block-group split-copy">
+<figure class="wp-block-image size-full brand-story-mark"><img src="assets/logo-full.webp" alt="DF Pet Care dragon fruit, dog and cat brand mark"/></figure>
+
+</div>
+
+
+<div class="wp-block-group split-visual">
+<p class="eyebrow">Our story</p>
+
+
+<h2 class="wp-block-heading">Because every pet<br><em>is family.</em></h2>
+
+
+<p>Our name began with a little boy nicknamed “Dragon Fruit”. It grew into a belief: the pets who share our lives deserve the same thoughtful care we give to those we love.</p>
+
+
+<p>Based in Hong Kong, we bring this personal commitment to the fascinating world of pet microbiome health.</p>
+
+
+<div class="wp-block-buttons">
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="about-us.html">Meet DF Pet Care →</a></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="wp-block-group section product-feature">
+<div class="wp-block-group container">
+<div class="wp-block-group split ">
+<div class="wp-block-group split-copy">
+<p class="eyebrow">Meet DF Gut</p>
+
+
+<h2 class="wp-block-heading">Small sachet.<br>Thoughtful science.</h2>
+
+
+<p class="product-subtitle">S. boulardii Daily Digestive Support</p>
+
+
+<p>A powdered supplement featuring Saccharomyces boulardii CNCM I-1079 and mannan oligosaccharides (MOS), developed to complement everyday digestive wellness.</p>
+
+
+<p class="microline">10 × 2g sachets · For cats & dogs</p>
+
+
+<div class="wp-block-buttons">
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="df-gut.html">Explore DF Gut →</a></div>
+
+</div>
+
+</div>
+
+
+<div class="wp-block-group split-visual">
+<figure class="wp-block-image size-full"><img src="assets/gut-pouch.webp" alt="DF Gut resealable pouch with ten sachets"/></figure>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</main><footer class="site-footer"><div class="container"><div class="footer-top"><div><p class="footer-brand">DF PET CARE</p><p>Science-led Microbiome Wellness for Pets</p><p class="footer-tagline">Because every pet is family.</p></div><div><p class="eyebrow">Explore</p><p><a class="" href="about-us.html">About Us</a></p><p><a class="" href="our-science.html">Our Science</a></p><p><a class="" href="products.html">Products</a></p><p><a class="" href="contact-us.html">Contact Us</a></p>
+<p><a class="" href="knowledge-hub.html">Knowledge Hub</a></p>
+
+</div><div><p class="eyebrow">Get in touch</p><p><a href="mailto:info.dfpetcare@gmail.com">info.dfpetcare@gmail.com</a></p><p><a href="https://wa.me/8613913708486">WhatsApp ↗</a></p><p>Hong Kong</p></div></div><div class="footer-bottom">© 2026 DF Petscare (Hongkong) Limited. All rights reserved.</div></div></footer></body></html>
