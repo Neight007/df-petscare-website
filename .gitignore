@@ -15,3 +15,6 @@ __pycache__/
 /tools/wordpress-blueprint.json
 /tools/check-php.mjs
 /tools/build_wordpress.py
+
+/DF Pet Care update ver2/
+/tools/ver2_content.py
